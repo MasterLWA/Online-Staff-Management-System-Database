@@ -44,3 +44,33 @@ CREATE TABLE `leave` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
+CREATE TABLE `manager` (
+  `mID` int NOT NULL AUTO_INCREMENT,
+  `Role` varchar(45) DEFAULT NULL,
+  `promoteDate` date DEFAULT (curdate()),
+  PRIMARY KEY (`mID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `notification` (
+  `notification_id` int NOT NULL AUTO_INCREMENT,
+  `department_id` int NOT NULL,
+  `notification_content` varchar(225) NOT NULL,
+  `notification_d&t` datetime NOT NULL,
+  PRIMARY KEY (`notification_id`),
+  KEY `FK_departmentID` (`department_id`),
+  CONSTRAINT `FK_departmentID` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `paysheet` (
+  `Paysheet_Id` int NOT NULL AUTO_INCREMENT,
+  `OT` int NOT NULL,
+  `additional_amount` double NOT NULL,
+  `Salary_total` double NOT NULL,
+  `staff_id` int DEFAULT NULL,
+  PRIMARY KEY (`Paysheet_Id`),
+  KEY `FK_staff_id` (`staff_id`),
+  CONSTRAINT `FK_staff_id` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staffID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
