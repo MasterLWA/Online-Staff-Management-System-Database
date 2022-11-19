@@ -26,3 +26,21 @@ CREATE TABLE `department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
+CREATE TABLE `leave` (
+  `leaveId` int NOT NULL AUTO_INCREMENT,
+  `leave_type` varchar(45) NOT NULL,
+  `reason` varchar(100) NOT NULL,
+  `leave_from` date NOT NULL,
+  `leave_till` date NOT NULL,
+  `approval` varchar(5) NOT NULL,
+  `time` time NOT NULL,
+  `approvedBy` int DEFAULT NULL,
+  `requestBy` int DEFAULT NULL,
+  PRIMARY KEY (`leaveId`),
+  KEY `FK_approvedBy` (`approvedBy`),
+  KEY `FK_requestBy` (`requestBy`),
+  CONSTRAINT `FK_approvedBy` FOREIGN KEY (`approvedBy`) REFERENCES `manager` (`mID`),
+  CONSTRAINT `FK_requestBy` FOREIGN KEY (`requestBy`) REFERENCES `staff` (`staffID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
