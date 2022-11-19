@@ -1,0 +1,17 @@
+SELECT `staff`.`staffID`,
+    `staff`.`password`,
+    `staff`.`firstName`,
+    `staff`.`lastName`,
+    `staff`.`p_email`,
+    `staff`.`w_email`,
+    `staff`.`profile_pic`,
+    `staff`.`birthday`,
+    `staff`.`gender`,
+    `staff`.`phoneNumber`,
+    `staff`.`address`,
+    `staff`.`hireDate`,
+    `staff`.`quitDate`,
+    `staff`.`salary`,
+    `staff`.`ot_rate`,
+    `staff`.`staffcol`
+FROM `osms`.`staff`;
