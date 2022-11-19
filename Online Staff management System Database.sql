@@ -1,3 +1,4 @@
+--admin
 CREATE TABLE `admin` (
   `adminID` int NOT NULL AUTO_INCREMENT,
   `admin_username` varchar(45) NOT NULL,
@@ -5,6 +6,7 @@ CREATE TABLE `admin` (
   PRIMARY KEY (`adminID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+--attendance
 CREATE TABLE `attendance` (
   `attendance_id` int NOT NULL AUTO_INCREMENT,
   `staff_id` int DEFAULT NULL,
@@ -16,6 +18,8 @@ CREATE TABLE `attendance` (
   CONSTRAINT `FK_attendance_staff_id` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staffID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+
+--department
 CREATE TABLE `department` (
   `department_id` int NOT NULL,
   `department_name` varchar(45) DEFAULT NULL,
@@ -25,7 +29,7 @@ CREATE TABLE `department` (
   CONSTRAINT `FK_manger_id` FOREIGN KEY (`manger_id`) REFERENCES `manager` (`mID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-
+--leave
 CREATE TABLE `leave` (
   `leaveId` int NOT NULL AUTO_INCREMENT,
   `leave_type` varchar(45) NOT NULL,
@@ -44,6 +48,7 @@ CREATE TABLE `leave` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
+--manager
 CREATE TABLE `manager` (
   `mID` int NOT NULL AUTO_INCREMENT,
   `Role` varchar(45) DEFAULT NULL,
@@ -52,7 +57,7 @@ CREATE TABLE `manager` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
-
+--notification
 CREATE TABLE `notification` (
   `notification_id` int NOT NULL AUTO_INCREMENT,
   `department_id` int NOT NULL,
@@ -63,7 +68,7 @@ CREATE TABLE `notification` (
   CONSTRAINT `FK_departmentID` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-
+--paysheet
 CREATE TABLE `paysheet` (
   `Paysheet_Id` int NOT NULL AUTO_INCREMENT,
   `OT` int NOT NULL,
@@ -76,7 +81,7 @@ CREATE TABLE `paysheet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
-
+--project
 CREATE TABLE `project` (
   `project_id` int NOT NULL AUTO_INCREMENT,
   `project_name` varchar(45) DEFAULT NULL,
@@ -89,7 +94,7 @@ CREATE TABLE `project` (
   CONSTRAINT `FK_mID` FOREIGN KEY (`handlerID`) REFERENCES `manager` (`mID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-
+--project report
 CREATE TABLE `projectreport` (
   `report_id` int NOT NULL AUTO_INCREMENT,
   `no_of_task` int NOT NULL,
@@ -101,7 +106,7 @@ CREATE TABLE `projectreport` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 
-
+--staff
 CREATE TABLE `staff` (
   `staffID` int NOT NULL AUTO_INCREMENT,
   `password` varchar(45) NOT NULL,
