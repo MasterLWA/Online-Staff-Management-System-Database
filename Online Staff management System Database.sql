@@ -16,4 +16,13 @@ CREATE TABLE `attendance` (
   CONSTRAINT `FK_attendance_staff_id` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staffID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+CREATE TABLE `department` (
+  `department_id` int NOT NULL,
+  `department_name` varchar(45) DEFAULT NULL,
+  `manger_id` int DEFAULT NULL,
+  PRIMARY KEY (`department_id`),
+  KEY `FK_manger_id` (`manger_id`),
+  CONSTRAINT `FK_manger_id` FOREIGN KEY (`manger_id`) REFERENCES `manager` (`mID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
 
