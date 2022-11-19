@@ -74,3 +74,51 @@ CREATE TABLE `paysheet` (
   KEY `FK_staff_id` (`staff_id`),
   CONSTRAINT `FK_staff_id` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staffID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `project` (
+  `project_id` int NOT NULL AUTO_INCREMENT,
+  `project_name` varchar(45) DEFAULT NULL,
+  `project_start` datetime DEFAULT NULL,
+  `project_due` datetime DEFAULT NULL,
+  `project_description` varchar(100) DEFAULT NULL,
+  `handlerID` int DEFAULT NULL,
+  PRIMARY KEY (`project_id`),
+  KEY `FK_mID` (`handlerID`),
+  CONSTRAINT `FK_mID` FOREIGN KEY (`handlerID`) REFERENCES `manager` (`mID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `projectreport` (
+  `report_id` int NOT NULL AUTO_INCREMENT,
+  `no_of_task` int NOT NULL,
+  `completed_task` varchar(100) NOT NULL,
+  `report_projectID` int DEFAULT NULL,
+  PRIMARY KEY (`report_id`),
+  KEY `FK_report_projectID` (`report_projectID`),
+  CONSTRAINT `FK_report_projectID` FOREIGN KEY (`report_projectID`) REFERENCES `project` (`project_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `staff` (
+  `staffID` int NOT NULL AUTO_INCREMENT,
+  `password` varchar(45) NOT NULL,
+  `firstName` varchar(45) NOT NULL,
+  `lastName` varchar(45) NOT NULL,
+  `p_email` varchar(45) NOT NULL,
+  `w_email` varchar(45) NOT NULL,
+  `profile_pic` varchar(255) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `gender` varchar(45) DEFAULT NULL,
+  `phoneNumber` char(10) DEFAULT NULL,
+  `address` varchar(225) DEFAULT NULL,
+  `hireDate` date DEFAULT (curdate()),
+  `quitDate` date DEFAULT NULL,
+  `salary` double NOT NULL,
+  `ot_rate` double NOT NULL,
+  `staffcol` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`staffID`),
+  UNIQUE KEY `staffID_UNIQUE` (`staffID`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
